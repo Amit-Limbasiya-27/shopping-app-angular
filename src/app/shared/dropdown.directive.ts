@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostBinding, HostListener, OnInit } from "@angul
 export class DropDownDirective implements OnInit{
     @HostBinding('class.open') isOpen:boolean = false;
     @HostListener('document:click',['$event']) Toggle(event:Event){
-        this.isOpen = this.elRef.nativeElement.contains(event.target)?!this.isOpen:false;
+        this.isOpen = this.elRef.nativeElement.contains(event.target) ? !this.isOpen : false;
     }
     
     constructor(private elRef:ElementRef) {}
