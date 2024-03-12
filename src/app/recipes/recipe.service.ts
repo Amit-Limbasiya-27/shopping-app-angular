@@ -10,9 +10,9 @@ export class RecipeService{
         
     }
     private recipes: Recipe[] = [
-        new Recipe("Test recipe 1","This is the test1!","https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg",
+        new Recipe("Tasty Burger","This is the burger!","https://img.freepik.com/free-photo/delicious-burger-with-many-ingredients-isolated-white-background-tasty-cheeseburger-splash-sauce_90220-1266.jpg?w=1380&t=st=1710249618~exp=1710250218~hmac=e5d8b271fe809fcc1190d0578367f80d7862b60cc33c7109ce1710ede97baed2",
             [{name:"a",amount:5},{name:"b",amount:15}]),
-        new Recipe("Test recipe 2","This is the test2!","https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg",
+        new Recipe("Pizza","What else you want to know!","https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg",
             [{name:"c",amount:25},{name:"d",amount:45}])
     ];
 
@@ -22,5 +22,8 @@ export class RecipeService{
 
     addIngredientsToShoppingList(ingredients:Ingredient[]){
         this.slService.addIngredients(ingredients);
+    }
+    getRecipeById(id:number){
+        return this.recipes[id];
     }
 }
