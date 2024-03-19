@@ -19,9 +19,11 @@
             <app-loading-spinner></app-loading-spinner>
         </div>
 
-        <div class="alert alert-danger" *ngIf="error">
+        <!-- <div class="alert alert-danger" *ngIf="error">
             <p>{{ error }}</p>
-        </div>
+        </div> -->
+        <!-- <app-alert [message]="error" *ngIf="error" (closeAlertBox)="onCloseAlertBox()"></app-alert> -->
+        <ng-template appPlaceholder></ng-template>
 
     </div>
 </div>
