@@ -21,7 +21,8 @@ export class AuthComponent implements OnDestroy{
     constructor(private authService:AuthService, private router:Router,private componentFactoryResolver:ComponentFactoryResolver) {}
 
     ngOnDestroy(): void {
-        this.alertboxCloseSub.unsubscribe();
+        if(this.alertboxCloseSub)
+            this.alertboxCloseSub.unsubscribe();
     }
     
     switchMode(){
