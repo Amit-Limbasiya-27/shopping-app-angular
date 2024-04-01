@@ -1,8 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
 import { DataStorageService } from "../shared/data-storage.service";
 import { AuthService } from "../auth/auth.service";
-import { Subscription } from "rxjs";
+import { Observable, Subscription, map } from "rxjs";
 import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { StoreType } from "../shared/Store-type";
+import { User } from "../auth/user.model";
 @Component({
     selector: "app-header",
     templateUrl: "./header.component.html"
@@ -10,10 +13,10 @@ import { Router } from "@angular/router";
 export class HeaderComponent implements OnInit, OnDestroy {
     isAuthenticated:boolean=false;
     private userSubcription:Subscription;
-    constructor(private dataStorageService: DataStorageService, private authService: AuthService) { }
+    constructor(private dataStorageService: DataStorageService, private authService: AuthService,private store:Store<StoreType>) { }
 
     ngOnInit(): void {
-        this.userSubcription = this.authService.user.subscribe(user=>{
+        this.userSubcription = this.store.select('auth').pipe(map(authstate=>authstate.user)).subscribe(user=>{
             this.isAuthenticated = !!user
         })
     }
